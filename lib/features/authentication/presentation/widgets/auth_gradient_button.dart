@@ -2,7 +2,7 @@ import 'package:blog_app/core/theme/colors.dart';
 import 'package:flutter/material.dart';
 
 class AuthGradientButton extends StatelessWidget {
-  final Function() onPressed;
+  final VoidCallback onPressed;
   final String buttonText;
 
   const AuthGradientButton(
