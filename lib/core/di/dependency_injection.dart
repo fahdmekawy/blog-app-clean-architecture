@@ -22,22 +22,41 @@ Future<void> initDependencies() async {
   );
 
   // Register Supabase Client
-  serviceLocator.registerLazySingleton(() => supabase.client);
+  serviceLocator.registerLazySingleton(
+    () => supabase.client,
+  );
 }
 
 void _initAuth() {
-  // Register Auth Remote Data Source
-  serviceLocator.registerFactory<AuthRemoteDataSource>(
-      () => AuthRemoteDataSourceImplementation(serviceLocator()));
-// Register Auth Repository
-  serviceLocator.registerFactory<AuthRepository>(
-      () => AuthRepositoryImplementation(serviceLocator()));
-
-  // Register Auth Use Cases
-  serviceLocator.registerFactory(() => UserSignUp(serviceLocator()));
-  serviceLocator.registerFactory(() => UserLogin(serviceLocator()));
-
-  // Register Auth Bloc
-  serviceLocator.registerLazySingleton<AuthBloc>(() =>
-      AuthBloc(userSignUp: serviceLocator(), userLogin: serviceLocator()));
+  // Data Source
+  serviceLocator
+    ..registerFactory<AuthRemoteDataSource>(
+      () => AuthRemoteDataSourceImplementation(
+        serviceLocator(),
+      ),
+    )
+    // Repository
+    ..registerFactory<AuthRepository>(
+      () => AuthRepositoryImplementation(
+        serviceLocator(),
+      ),
+    )
+    // Use Cases
+    ..registerFactory(
+      () => UserSignUp(
+        serviceLocator(),
+      ),
+    )
+    ..registerFactory(
+      () => UserLogin(
+        serviceLocator(),
+      ),
+    )
+    // Bloc
+    ..registerLazySingleton<AuthBloc>(
+      () => AuthBloc(
+        userSignUp: serviceLocator(),
+        userLogin: serviceLocator(),
+      ),
+    ); // Register Auth Bloc
 }
