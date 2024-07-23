@@ -3,6 +3,7 @@ import 'package:blog_app/core/extensions/context.dart';
 import 'package:blog_app/core/theme/colors.dart';
 import 'package:blog_app/features/authentication/presentation/bloc/auth_bloc.dart';
 import 'package:blog_app/features/authentication/presentation/screens/signup_screen.dart';
+import 'package:blog_app/features/blog/presentation/screens/blog_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/utils/show_snackbar.dart';
@@ -34,7 +35,11 @@ class _LoginScreenState extends State<LoginScreen> {
     return Scaffold(
       body: BlocConsumer<AuthBloc, AuthState>(
         listener: (context, state) {
-          if (state is AuthFailure) showSnackBack(context, state.message);
+          if (state is AuthFailure) {
+            showSnackBack(context, state.message);
+          } else if (state is AuthSuccess) {
+            context.navigateAndReplace(const BlogScreen());
+          }
         },
         builder: (context, state) {
           if (state is AuthLoading) {

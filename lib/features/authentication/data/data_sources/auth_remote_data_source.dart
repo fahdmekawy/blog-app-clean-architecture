@@ -62,6 +62,8 @@ class AuthRemoteDataSourceImplementation implements AuthRemoteDataSource {
         throw const ServerException('Failed to sign up');
       }
       return UserModel.fromJson(response.user!.toJson()).copyWith(email: email);
+    } on AuthException catch (e) {
+      throw ServerException(e.message);
     } catch (e) {
       throw ServerException(e.toString());
     }
@@ -80,6 +82,8 @@ class AuthRemoteDataSourceImplementation implements AuthRemoteDataSource {
         throw const ServerException('User not found');
       }
       return UserModel.fromJson(response.user!.toJson()).copyWith(email: email);
+    } on AuthException catch (e) {
+      throw ServerException(e.message);
     } catch (e) {
       throw ServerException(e.toString());
     }

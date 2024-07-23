@@ -4,6 +4,7 @@ import 'package:blog_app/core/theme/colors.dart';
 import 'package:blog_app/core/utils/show_snackbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../blog/presentation/screens/blog_screen.dart';
 import '../../domain/use_cases/user_sign_up.dart';
 import '../bloc/auth_bloc.dart';
 import '../widgets/auth_field.dart';
@@ -36,10 +37,10 @@ class _SignupScreenState extends State<SignupScreen> {
       appBar: AppBar(),
       body: BlocConsumer<AuthBloc, AuthState>(
         listener: (context, state) {
-          if (state is AuthFailure) showSnackBack(context, state.message);
-          if (state is AuthSuccess) {
-            showSnackBack(context, 'Sign Up Successful');
-            context.pop();
+          if (state is AuthFailure) {
+            showSnackBack(context, state.message);
+          } else if (state is AuthSuccess) {
+            context.navigateAndReplace(const BlogScreen());
           }
         },
         builder: (context, state) {

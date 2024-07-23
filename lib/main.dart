@@ -5,7 +5,7 @@ import 'package:blog_app/features/authentication/presentation/screens/login_scre
 import 'package:blog_app/features/blog/presentation/bloc/blog_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'core/di/dependency_injection.dart';
+import 'core/di/imports.dart';
 import 'features/blog/presentation/screens/blog_screen.dart';
 
 void main() async {
