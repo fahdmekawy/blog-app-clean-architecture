@@ -17,6 +17,8 @@ dependencies:
   dotted_border: ^2.1.0
   # Image picker for picking image from gallery or camera.
   image_picker: ^1.1.2
+  # UUID for generating unique IDs.
+  uuid: ^4.4.2
 
 
   flutter:
