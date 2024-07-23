@@ -14,3 +14,5 @@ final class AuthLogin extends AuthEvent {
 
   AuthLogin({required this.userLoginParams});
 }
+
+final class AuthIsUserLoggedIn extends AuthEvent {}

@@ -13,6 +13,10 @@ dependencies:
   flutter_bloc: ^8.1.6
   # GetIt for dependency injection.
   get_it: ^7.7.0
+  # Dotted border for creating a border around a widget.
+  dotted_border: ^2.1.0
+  # Image picker for picking image from gallery or camera.
+  image_picker: ^1.1.2
 
 
   flutter:

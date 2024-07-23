@@ -1,4 +1,4 @@
-import 'package:blog_app/core/common/loader.dart';
+import 'package:blog_app/core/common/widgets/loader.dart';
 import 'package:blog_app/core/extensions/context.dart';
 import 'package:blog_app/core/theme/colors.dart';
 import 'package:blog_app/features/authentication/presentation/bloc/auth_bloc.dart';
@@ -35,9 +35,6 @@ class _LoginScreenState extends State<LoginScreen> {
       body: BlocConsumer<AuthBloc, AuthState>(
         listener: (context, state) {
           if (state is AuthFailure) showSnackBack(context, state.message);
-          if (state is AuthSuccess) {
-            showSnackBack(context, 'Login Successful');
-          }
         },
         builder: (context, state) {
           if (state is AuthLoading) {
