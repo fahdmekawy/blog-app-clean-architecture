@@ -19,6 +19,8 @@ dependencies:
   image_picker: ^1.1.2
   # UUID for generating unique IDs.
   uuid: ^4.4.2
+  # Flutter internationalization.
+  intl:
 
 
   flutter:
